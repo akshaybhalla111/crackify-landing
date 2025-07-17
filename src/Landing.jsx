@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function Landing() {
   const [typedText, setTypedText] = useState('');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
   const fullText = 'Ace Every Interview with AI.';
 
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function Landing() {
         i++;
       } else {
         clearInterval(timer);
+        setIsTyping(false);
       }
     }, 100);
     return () => clearInterval(timer);
@@ -68,18 +70,18 @@ export default function Landing() {
   const testimonials = [
     {
       quote: "Crackify gave me confidence — I cracked two interviews in just 3 weeks.",
-      author: "Sarah Chen",
-      role: "Software Engineer at Meta"
+      author: "Priya Shekde",
+      role: "Software Engineer at FIS"
     },
     {
       quote: "The AI answers felt so natural, it was like having a secret coach.",
-      author: "Marcus Rodriguez",
-      role: "Product Manager at Netflix"
+      author: "Shivani Bhalla",
+      role: "Software Developer at Trdez"
     },
     {
       quote: "Stealth mode helped me during my actual Google Meet call. Game changer.",
-      author: "Priya Patel",
-      role: "Data Scientist at Google"
+      author: "Satish Lamak",
+      role: "Technical Lead at Netcracker"
     }
   ];
 
@@ -189,7 +191,9 @@ export default function Landing() {
               <span className="bg-gradient-to-r from-cyan-300 via-blue-200 to-purple-300 bg-clip-text text-transparent">
                 {typedText}
               </span>
-              <span className="animate-pulse text-yellow-300">|</span>
+              {isTyping && (
+                <span className="animate-pulse text-yellow-300">|</span>
+              )}
             </h1>
             <p className="text-xl sm:text-2xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
               Crackify gives you real-time AI-powered interview support — mock or live.
