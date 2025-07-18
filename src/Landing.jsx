@@ -93,7 +93,7 @@ export default function Landing() {
   }, [testimonials.length]);
 
   const handleAuthRedirect = () => {
-    window.location.href = '/auth';
+    window.location.href = "https://app.crackify-ai.com/login";
   };
 
   return (
